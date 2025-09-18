@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notlifier - Deine Notizen-App</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Login/Register Overlay -->
+    <div id="auth-overlay" class="auth-overlay">
+        <div class="auth-container">
+            <div class="auth-header">
+                <h1><i class="fas fa-sticky-note"></i> Notlifier</h1>
+                <p>Willkommen! Melde dich an oder registriere dich.</p>
+            </div>
+            <div class="auth-tabs">
+                <button id="login-tab" class="tab active">Anmelden</button>
+                <button id="register-tab" class="tab">Registrieren</button>
+            </div>
+            <!-- Login Form -->
+            <form id="login-form" class="auth-form">
+                <div class="form-group">
+                    <label for="login-username">Benutzername</label>
+                    <input type="text" id="login-username" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Passwort</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit" class="btn-primary full-width">Anmelden</button>
+            </form>
+            <!-- Register Form -->
+            <form id="register-form" class="auth-form" style="display: none;">
+                <div class="form-group">
+                    <label for="register-username">Benutzername</label>
+                    <input type="text" id="register-username" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Passwort</label>
+                    <input type="password" id="register-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">E-Mail (optional)</label>
+                    <input type="email" id="register-email">
+                </div>
+                <button type="submit" class="btn-primary full-width">Registrieren</button>
+            </form>
+            <div id="auth-message" class="auth-message"></div>
+        </div>
+    </div>
+
+    <!-- Main App (hidden initially) -->
+    <div id="app-container" class="app-container" style="display: none;">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <h1 class="logo"><i class="fas fa-sticky-note"></i> Notlifier</h1>
+                    <span id="user-welcome" class="user-welcome"></span>
+                </div>
+                <div class="header-actions">
+                    <button id="logout-btn" class="btn-secondary"><i class="fas fa-sign-out-alt"></i> Abmelden</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Layout: Sidebar + Content -->
+        <div class="main-layout">
+            <!-- Sidebar: Navigation für Notizen -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <h2><i class="fas fa-list"></i> Deine Notizen</h2>
+                    <button id="new-note-btn" class="btn-primary" title="Neue Notiz erstellen">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+                <div class="search-bar">
+                    <input type="text" id="search-notes" placeholder="Suche Notizen...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="notes-list" id="notes-list">
+                    <!-- Dynamisch generierte Notizen-Liste wird hier eingefügt -->
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="main-content">
+                <div class="content-header">
+                    <h2 id="current-note-title"><i class="fas fa-lightbulb"></i> Willkommen! Erstelle deine erste Notiz.</h2>
+                </div>
+                <div class="editor-container" id="editor-container">
+                    <div class="note-editor" contenteditable="true" id="note-editor" data-placeholder="Tippe hier, um zu beginnen..."></div>
+                </div>
+                <div class="content-footer">
+                    <button id="save-note-btn" class="btn-secondary"><i class="fas fa-save"></i> Speichern</button>
+                    <button id="delete-note-btn" class="btn-danger" style="display: none;"><i class="fas fa-trash"></i> Löschen</button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
